@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using FlipKart.Send_Email;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -26,7 +27,8 @@ namespace FlipKart.Base
         [OneTimeTearDown]
         public void Close()
         {
-            Thread.Sleep(8000);          
+            Thread.Sleep(8000);
+            EmailSend.SendMail();
             driver.Quit();
         }
     }

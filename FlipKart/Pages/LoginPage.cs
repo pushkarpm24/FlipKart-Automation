@@ -16,7 +16,7 @@ namespace FlipKart.Pages
             PageFactory.InitElements(driver, this);
         }
        
-        [FindsBy(How = How.XPath, Using = "//input")]
+        [FindsBy(How = How.XPath, Using = "//input[@class='_2zrpKA _1dBPDZ']")]
         public IWebElement MobileBox;
         [FindsBy(How = How.XPath, Using = "//input[@class='_2zrpKA _3v41xv _1dBPDZ']")]
         public IWebElement Password;
