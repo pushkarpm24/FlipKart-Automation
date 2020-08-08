@@ -48,8 +48,8 @@ namespace FlipKart
             AddAddressPage address = new AddAddressPage(driver);
             address.ProvideAddress();
             //Validation            
-          //  Thread.Sleep(5000);
-          //  Assert.IsTrue(driver.FindElement(By.XPath("//div[@class='_1QbRjw']")).Displayed);
+            Thread.Sleep(5000);
+            Assert.IsTrue(driver.FindElement(By.XPath("//h3[@class='_1fM65H _2RMAtd']")).Displayed);
         }
 
         [Test, Order(5)]
@@ -58,8 +58,8 @@ namespace FlipKart
             LogoutPage logout = new LogoutPage(driver);            
             logout.LogoutFromAccount();
             //Validation            
-           // Thread.Sleep(5000);
-           // Assert.IsTrue(driver.FindElement(By.XPath("//div[@class='_1QbRjw']")).Displayed);
+            Thread.Sleep(5000);
+            Assert.IsTrue(driver.FindElement(By.XPath("//div[@class='Og_iib col col-2-5 _3SWFXF']")).Displayed);
         }
     }
 }
