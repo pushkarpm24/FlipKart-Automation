@@ -14,17 +14,6 @@ namespace FlipKart
     [TestFixture]
     public class TestClass : BaseClass
     {
-        ExtentReports extent = null;
-        ExtentTest test = null;
-
-        [OneTimeSetUp]
-        public void ExtentStart()
-        {
-            extent = new ExtentReports();
-            var htmlReporter = new ExtentHtmlReporter(@"C:\Users\HP\source\repos\FlipKart\FlipKart\ExtentReport\TestClass.html");
-            extent.AttachReporter(htmlReporter);
-        }
-
         [Test, Order(1)]
         public void LoginPageTest()
         {
@@ -149,12 +138,6 @@ namespace FlipKart
                 ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FlipKart\\FlipKart\\ScreenShot\\LogoutAccountTest.png", ScreenshotImageFormat.Png);
                 throw;
             }
-        }
-
-        [OneTimeTearDown]
-        public void ExtentClose()
-        {
-            extent.Flush();
-        }
+        }       
     }
 }
