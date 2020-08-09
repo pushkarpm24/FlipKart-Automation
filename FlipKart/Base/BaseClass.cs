@@ -20,13 +20,13 @@ namespace FlipKart.Base
         public void Initlize()
         {
             ChromeOptions opt = new ChromeOptions();
-            opt.AddArguments("--disable-notification");
+            opt.AddArguments("--disable-notification","--start-maximized");
             driver = new ChromeDriver(opt);
            // driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            driver.Manage().Window.Maximize();
+           // driver.Manage().Window.Maximize();
             string flipKartUrl = ConfigurationManager.AppSettings["url"];
             driver.Url = flipKartUrl;
-
+            //Extent Report..
             extent = new ExtentReports();
             var htmlReporter = new ExtentHtmlReporter(@"C:\Users\HP\source\repos\FlipKart\FlipKart\ExtentReport\TestClass.html");
             extent.AttachReporter(htmlReporter);

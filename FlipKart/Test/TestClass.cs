@@ -14,9 +14,13 @@ namespace FlipKart
     [TestFixture]
     public class TestClass : BaseClass
     {
+        //applied logger in console
+        private static readonly log4net.ILog log =
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [Test, Order(1)]
         public void LoginPageTest()
-        {
+        {            
             try
             {
                 test = extent.CreateTest("LoginPageTest").Info("Login Test Started.."); //To write Logs In The Report
@@ -25,10 +29,9 @@ namespace FlipKart
                 login.AccountLogin();
                 test.Log(Status.Info, "Login Successfull..");
                 //Validation
-                string expectedPageUrl = "https://www.flipkart.com/";
-                string actualPageUrl = driver.Url;
-                Assert.AreEqual(expectedPageUrl, actualPageUrl);
+                Assert.IsTrue(driver.FindElement(By.XPath("//div[contains(text(),'pushkar')]")).Displayed);
                 test.Log(Status.Pass, "Login Test Passed.."); //shows the pass status in report
+                log.Info("login verification successfull");
             }
             catch (Exception e)
             {
@@ -54,6 +57,7 @@ namespace FlipKart
                 driver.SwitchTo().Window(driver.WindowHandles[1]);
                 Assert.IsTrue(driver.FindElement(By.Id("pincodeInputId")).Displayed);
                 test.Log(Status.Pass, "SearchProductTest Passed.."); //shows the pass status in report
+                log.Info("SearchProductTest verification successfull");
             }
             catch(Exception e)
             {
@@ -79,6 +83,7 @@ namespace FlipKart
                 Thread.Sleep(5000);
                 Assert.IsTrue(driver.FindElement(By.XPath("//div[@class='_1QbRjw']")).Displayed);
                 test.Log(Status.Pass, "AddProductToCartTest Passed.."); //shows the pass status in report
+                log.Info("AddProductToCartTest verification successfull");
             }
             catch (Exception e)
             {
@@ -104,6 +109,7 @@ namespace FlipKart
                 Thread.Sleep(5000);
                 Assert.IsTrue(driver.FindElement(By.XPath("//h3[@class='_1fM65H _2RMAtd']")).Displayed);
                 test.Log(Status.Pass, "AddAddressTest Passed.."); //shows the pass status in report
+                log.Info("AddAddressTest verification successfull");
             }
             catch (Exception e)
             {
@@ -129,6 +135,7 @@ namespace FlipKart
                 Thread.Sleep(5000);
                 Assert.IsTrue(driver.FindElement(By.XPath("//div[@class='Og_iib col col-2-5 _3SWFXF']")).Displayed);
                 test.Log(Status.Pass, "LogoutAccountTest Passed.."); //shows the pass status in report
+                log.Info("LogoutAccountTest verification successfull");
             }
             catch (Exception e)
             {
