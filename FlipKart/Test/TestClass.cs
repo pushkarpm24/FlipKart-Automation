@@ -4,6 +4,7 @@ using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
 using FlipKart.Base;
 using FlipKart.Pages;
+using FlipKart.ScreenShot;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -14,7 +15,7 @@ namespace FlipKart
     [TestFixture]
     public class TestClass : BaseClass
     {
-        //applied logger in console
+        //applied logger in file
         private static readonly log4net.ILog log =
             log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -37,8 +38,7 @@ namespace FlipKart
             {
                 test.Log(Status.Fail, e.ToString());
                 //taking screenshot 
-                Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FlipKart\\FlipKart\\ScreenShot\\LoginPageTest.png", ScreenshotImageFormat.Png);
+                test.AddScreenCaptureFromPath(TakeScreenshot.TakeSs(driver));
                 throw;
             }
         }
@@ -63,8 +63,7 @@ namespace FlipKart
             {
                 test.Log(Status.Fail, e.ToString());
                 //taking screenshot 
-                Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FlipKart\\FlipKart\\ScreenShot\\SearchProductTest.png", ScreenshotImageFormat.Png);
+                test.AddScreenCaptureFromPath(TakeScreenshot.TakeSs(driver));
                 throw;
             }
         }
@@ -89,8 +88,7 @@ namespace FlipKart
             {
                 test.Log(Status.Fail, e.ToString());
                 //taking screenshot 
-                Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FlipKart\\FlipKart\\ScreenShot\\AddProductToCartTest.png", ScreenshotImageFormat.Png);
+                test.AddScreenCaptureFromPath(TakeScreenshot.TakeSs(driver));
                 throw;
             }
         }
@@ -115,8 +113,7 @@ namespace FlipKart
             {
                 test.Log(Status.Fail, e.ToString());
                 //taking screenshot 
-                Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FlipKart\\FlipKart\\ScreenShot\\AddAddressTest.png", ScreenshotImageFormat.Png);
+                test.AddScreenCaptureFromPath(TakeScreenshot.TakeSs(driver));
                 throw;
             }
         }
@@ -141,8 +138,7 @@ namespace FlipKart
             {
                 test.Log(Status.Fail, e.ToString());
                 //taking screenshot 
-                Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FlipKart\\FlipKart\\ScreenShot\\LogoutAccountTest.png", ScreenshotImageFormat.Png);
+                test.AddScreenCaptureFromPath(TakeScreenshot.TakeSs(driver));
                 throw;
             }
         }       

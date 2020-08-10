@@ -128,6 +128,7 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\LogoutPage.cs" />
+    <Compile Include="ScreenShot\TakeScreenshot.cs" />
     <Compile Include="Send Email\EmailSend.cs" />
     <Compile Include="Test\TestClass.cs" />
   </ItemGroup>
@@ -137,9 +138,7 @@
     <None Include="Logs\Logs.log" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ScreenShot\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="ExtentReport\index.html" />
   </ItemGroup>
