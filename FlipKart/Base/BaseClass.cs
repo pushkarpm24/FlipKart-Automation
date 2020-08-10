@@ -1,7 +1,9 @@
 ﻿using AventStack.ExtentReports;
 using AventStack.ExtentReports.Reporter;
+using FlipKart.ScreenShot;
 using FlipKart.Send_Email;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -40,6 +42,31 @@ namespace FlipKart.Base
             Thread.Sleep(3000);
             EmailSend.SendMail();
             driver.Quit();
+        }
+
+        [TearDown]        
+        public void Teardown()
+        {
+            try
+            {
+                test = extent.CreateTest(TestContext.CurrentContext.Test.Name);
+                if(TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+                {
+                    test.Log(Status.Fail, "Test Failed..");
+                    //taking screenshot 
+                    test.AddScreenCaptureFromPath(TakeScreenshot.TakeSs(driver));
+                    
+                }
+                else if(TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Passed)
+                {
+                    test.Log(Status.Pass, "Test Successfull.."); //shows the pass status in report
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }
